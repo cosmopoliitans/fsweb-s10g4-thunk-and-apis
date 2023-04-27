@@ -32,7 +32,10 @@ export function myReducer(state = initial, action) {
       };
 
     case FAV_REMOVE:
-      return state;
+      const deleteItem = state.favs.filter(
+        (item) => item.id !== action.payload
+      );
+      return { ...state, favs: deleteItem };
 
     case FETCH_SUCCESS:
       return {
