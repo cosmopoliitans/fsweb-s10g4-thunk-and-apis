@@ -3,7 +3,7 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Item from "./components/Item";
 import FavItem from "./components/FavItem";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAnother, addFav } from "./actions";
+import { fetchAnother, addFav, getFavsFromLocalStorage } from "./actions";
 
 export default function App() {
   const loading = useSelector((store) => store.loading);
@@ -13,6 +13,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchAnother());
+    dispatch(getFavsFromLocalStorage());
   }, []);
 
   // function addToFavs() {}
