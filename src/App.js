@@ -4,12 +4,17 @@ import Item from "./components/Item";
 import FavItem from "./components/FavItem";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAnother, addFav, getFavsFromLocalStorage } from "./actions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
   const loading = useSelector((store) => store.loading);
   const current = useSelector((store) => store.current);
   const favs = useSelector((store) => store.favs);
   const dispatch = useDispatch();
+  const notification = () => {
+    toast("Favorilere eklendi!");
+  };
 
   useEffect(() => {
     dispatch(fetchAnother());
@@ -57,6 +62,8 @@ export default function App() {
             <button
               onClick={() => {
                 dispatch(addFav());
+                dispatch(fetchAnother());
+                notification();
               }}
               className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white"
             >
@@ -79,6 +86,18 @@ export default function App() {
           </div>
         </Route>
       </Switch>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

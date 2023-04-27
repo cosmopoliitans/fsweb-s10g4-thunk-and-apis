@@ -23,8 +23,8 @@ export const fetchAnother = () => (dispatch) => {
   dispatch({ type: FETCH_LOADING, payload: true });
   return axios
     .get("https://www.boredapi.com/api/activity")
-    .then((res) => {
-      dispatch({ type: FETCH_SUCCESS, payload: res.data });
+    .then((reponse) => {
+      dispatch({ type: FETCH_SUCCESS, payload: reponse.data });
       dispatch({ type: FETCH_LOADING, payload: false });
     })
     .catch((error) => dispatch({ type: FETCH_ERROR, payload: error }));
