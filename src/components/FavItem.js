@@ -2,11 +2,11 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { removeFav } from "../actions";
 
-function FavItem({ id, activity }) {
+function FavItem({ id, title }) {
   const dispatch = useDispatch();
   return (
     <div className="bg-white shadow hover:shadow-lg p-3 pl-5 flex items-center group transition-all">
-      <div className="flex-1 pr-4">{activity}</div>
+      <div className="flex-1 pr-4">{title.activity}</div>
       <button
         onClick={() => {
           dispatch(removeFav(id));

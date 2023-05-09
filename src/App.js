@@ -19,9 +19,7 @@ export default function App() {
   useEffect(() => {
     dispatch(fetchAnother());
     dispatch(getFavsFromLocalStorage());
-  }, []);
-
-  // function addToFavs() {}
+  }, [dispatch]);
 
   return (
     <div className="wrapper max-w-xl mx-auto px-4">
@@ -42,7 +40,6 @@ export default function App() {
           Favoriler
         </NavLink>
       </nav>
-
       <Switch>
         <Route exact path="/">
           {loading && (
@@ -76,7 +73,7 @@ export default function App() {
           <div className="flex flex-col gap-3">
             {favs.length > 0 ? (
               favs.map((item) => (
-                <FavItem key={item.key} id={item.key} title={item.activity} />
+                <FavItem key={item.id} id={item.id} title={item} />
               ))
             ) : (
               <div className="bg-white p-6 text-center shadow-md">

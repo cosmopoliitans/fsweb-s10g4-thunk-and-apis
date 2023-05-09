@@ -15,7 +15,7 @@ const initial = {
 };
 
 function writeFavsToLocalStorage(state) {
-  localStorage.setItem("s10g4", JSON.stringify(state.favs));
+  localStorage.setItem("favs", JSON.stringify(state.favs));
 }
 
 function readFavsFromLocalStorage() {
@@ -59,7 +59,6 @@ export function myReducer(state = initial, action) {
         ...state,
         error: action.payload,
       };
-
     case GET_FAVS_FROM_LS:
       const favsFromLocalStorage = readFavsFromLocalStorage() || [];
       return {
